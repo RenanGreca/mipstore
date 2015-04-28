@@ -641,7 +641,21 @@ body {
 ul, li {
   list-style: none;
   margin: 0;
-  padding: 0; }
+  padding: 0; 
+  text-align: center;
+}
+
+.previous {
+  font-size: 50px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.next {
+  font-size: 50px;
+  margin-left: 10px;
+  display: inline-block;
+}
 
 a {
   color: {{theme.pagina_texto}}; }
@@ -1006,12 +1020,17 @@ a {
   .product_page .images {
     background: {{theme.produto_fundo}};
     padding-right:500px;
+    text-align: center;
   }
     .product_page .images img {
-      max-width: 800px;
-      max-height: 800px;
+      /*max-width: 800px;
+      height: 800px;*/
       display: block;
       margin: 0 auto; }
+    .product_page .images a {
+      font-size:40px;
+      cursor:pointer;
+    }
   .product_page .details {
     position: absolute;
     width: 23%;
@@ -1356,13 +1375,13 @@ a {
           <div class="images">
             {{#each images}}
               <div imgid="{{this}}">
-                <img src='{{resize_image this "1300x>"}}'
+                <img src='{{resize_image this "x800"}}'
                      data-at2x='{{resize_image this "2600x>"}}'>
-                <a style="float:left; font-size:40px;"
-                     onclick="prev();"><</a>
+                <a class="l"
+                     onclick="prev();">←</a>
 
-                <a style="float:right; font-size:40px;"
-                   onclick="next();">></a>
+                <a class="r"
+                   onclick="next();">→</a>
               </div>
              <script type="text/javascript">
                imgs.push("{{this}}");
