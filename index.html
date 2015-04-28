@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="image:Logo" content=""/>
+  <meta name="image:Favicon" content=""/>
+  <meta name="image:Imagem de compartilhamento" content=""/>
+
+  <meta name="text:ID do Google Analytics" content=""/>
+
+  <meta name="text: Nome da loja"       content=""/>
+  <meta name="color:Nome da loja – Cor" content="#333333"/>
+
+  <meta name="color:Página – Fundo"     content="#FFFFFF"/>
+  <meta name="color:Página – Texto"     content="#333333"/>
+
+  <meta name="color:Categorias – Fundo" content="#333333"/>
+  <meta name="color:Categorias – Texto" content="#FFFFFF"/>
+
+  <meta name="color:Lista – Fundo"      content="#F6F6F6"/>
+  <meta name="color:Lista – Destaque"   content="#000000"/>
+  <meta name="color:Lista – Texto"      content="#FFFFFF"/>
+
+  <meta name="color:Produto – Fundo"    content="#F8F8F8"/>
+  <meta name="color:Produto – Destaque" content="#000000"/>
+  <meta name="color:Produto – Texto"    content="#000000"/>
+
+  <meta name="font:Fonte"               content="Josefin Sans"/>
+  <meta name="font:Fonte Secundária"    content="Oswald"/>
+  <meta name="font:Fonte Titulo"        content="Redressed"/>
+  <meta name="if:Título do produto itálico" content="0"/>
+  <meta name="text:Tamanho da fonte"    content="13"/>
+
+  <meta name="text:Título da lista destaque" content="Destaque"/>
+
+  <meta name="if:Exibir banners na home"  content="1"/>
+  <meta name="image:Banner 1 – Imagem"  content="//d3a12l3yff2695.cloudfront.net/shared/banners/banner-opala-light.jpg"/>
+  <meta name="text: Banner 1 – Link"    content="http://"/>
+  <meta name="image:Banner 2 – Imagem"  content=""/>
+  <meta name="text: Banner 2 – Link"    content="http://"/>
+  <meta name="image:Banner 3 – Imagem"  content=""/>
+  <meta name="text: Banner 3 – Link"    content="http://"/>
+  <meta name="image:Banner 4 – Imagem"  content=""/>
+  <meta name="text: Banner 4 – Link"    content="http://"/>
+  <meta name="image:Banner 5 – Imagem"  content=""/>
+  <meta name="text: Banner 5 – Link"    content="http://"/>
+
+  <meta name="text:Facebook"            content=""/>
+  <meta name="text:Twitter"             content=""/>
+  <meta name="text:Instagram"           content=""/>
+  <meta name="text:Flickr"              content=""/>
+  <meta name="text:Pinterest"           content=""/>
+  <meta name="text:Tumblr"              content=""/>
+  <meta name="text:Vimeo"               content=""/>
+  <meta name="text:YouTube"             content=""/>
+    
+  
+  <title>{{store_name}}
+
+    {{#list_page}}
+      {{#each categories}}
+        {{#if is_current}}
+          - {{label}}
+        {{/if}}
+      {{/each}}
+    {{/list_page}}
+
+    {{#product_page}}
+      {{#with product}}
+        - {{title}}
+      {{/with}}
+    {{/product_page}}
+
+    {{#is_custom_page}}
+      {{#each pages}}
+        {{#if is_current}}
+          - {{title}}
+        {{/if}}
+      {{/each}}
+    {{/is_custom_page}}
+ </title>
+  <meta name="description" content="{{#list_page}}
+      {{store_description_text}}
+    {{/list_page}}
+
+    {{#product_page}}
+      {{#with product}}
+        {{description_text}}
+      {{/with}}
+    {{/product_page}}
+
+    {{#is_custom_page}}
+      {{store_description_text}}
+    {{/is_custom_page}}
+ " />
+  <meta property="og:title" content="{{store_name}}
+
+    {{#list_page}}
+      {{#each categories}}
+        {{#if is_current}}
+          - {{label}}
+        {{/if}}
+      {{/each}}
+    {{/list_page}}
+
+    {{#product_page}}
+      {{#with product}}
+        - {{title}}
+      {{/with}}
+    {{/product_page}}
+
+    {{#is_custom_page}}
+      {{#each pages}}
+        {{#if is_current}}
+          - {{title}}
+        {{/if}}
+      {{/each}}
+    {{/is_custom_page}}
+ " />
+  <meta property="og:description" content="{{#list_page}}
+      {{store_description_text}}
+    {{/list_page}}
+
+    {{#product_page}}
+      {{#with product}}
+        {{description_text}}
+      {{/with}}
+    {{/product_page}}
+
+    {{#is_custom_page}}
+      {{store_description_text}}
+    {{/is_custom_page}}
+ " />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{store_name}}" />
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1000">
+  <meta property="og:image:height" content="1000">
+  {{#unless is_product_page}}
+    <meta property="og:image" content='{{resize_image theme.imagem_de_compartilhamento "1000x1000>"}}' />
+  {{/unless}}
+
+  <link rel="shortcut icon" type="image/png" href="{{resize_image theme.favicon "32x32>"}}">
+
+  <link  href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css' rel="stylesheet">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.11/slick.css' rel="stylesheet">
+  <script src='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.11/slick.min.js'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js'></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '{{theme.id_do_google_analytics}}', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <style>@charset "UTF-8";
+/* Neat 1.7.0.pre
+ * http://neat.bourbon.io
+ * Copyright 2012-2014 thoughtbot, inc.
+ * MIT License */
+/**
+ * Returns a media context (media query / grid context) that can be stored in a variable and passed to `media()` as a single-keyword argument. Media contexts defined using `new-breakpoint` are used by the visual grid, as long as they are defined before importing Neat.
+ *
+ * @param {List} $query
+ *   - A list of media query features and values. Each `$feature` should have a corresponding `$value`. If there is only a single `$value` in `$query`, `$default-feature` is going to be used. The number of total columns in the grid can be set by passing `$columns` at the end of the list (overrides `$total-columns`). For a list of valid values for `$feature`, click [here](http://www.w3.org/TR/css3-mediaqueries/#media1).
+ *
+ * @param {Number (unitless)} $total-columns ($grid-columns)
+ *   - Number of columns to use in the new grid context. Can be set as a shorthand in the first parameter.
+ *
+ * @example scss - Usage
+ *   $mobile: new-breakpoint(max-width 480px 4);
+ *
+ *   .element {
+ *     @include media($mobile) {
+ *       @include span-columns(4);
+ *     }
+ *   }
+ *
+ * @example css - CSS Output
+ *   @media screen and (max-width: 480px) {
+ *     .element {
+ *       display: block;
+ *       float: left;
+ *       margin-right: 7.42297%;
+ *       width: 100%;
+ *     }
+ *     .element:last-child {
+ *       margin-right: 0;
+ *     }
+ *   }
+ */
+/**
+ * Sets the relative width of a single grid column. The unit used should be the same one used to define `$gutter`. To learn more about golden-ratio() see [Bourbon docs](http://bourbon.io/docs/#golden-ratio). Set with a `!global` flag.
+ *
+ * @type Number (Unit)
+ */
+/**
+ * Sets the relative width of a single grid gutter. The unit used should be the same one used to define `$column`. To learn more about golden-ratio() see [Bourbon docs](http://bourbon.io/docs/#golden-ratio). Set with the `!global` flag.
+ *
+ * @type Number (Unit)
+ */
+/**
+ * Sets the total number of columns in the grid. Its value can be overridden inside a media query using the `media()` mixin. Set with the `!global` flag.
+ *
+ * @type Number (Unitless)
+ */
+/**
+ * Sets the max-width property of the element that includes `outer-container()`. To learn more about `em()` see [Bourbon docs](http://bourbon.io/docs/#px-to-em). Set with the `!global` flag.
+ *
+ * @type Number (Unit)
+ */
+/**
+ * When set to true, it sets the box-sizing property of all elements to `border-box`. Set with a `!global` flag.
+ *
+ * @type Bool
+ *
+ * @example css - CSS Output
+ *   * {
+ *     -webkit-box-sizing: border-box;
+ *     -moz-box-sizing: border-box;
+ *     box-sizing: border-box;
+ *   }
+ */
+/**
+ * Sets the default [media feature](http://www.w3.org/TR/css3-mediaqueries/#media) that `media()` and `new-breakpoint()` revert to when only a breakpoint value is passed. Set with a `!global` flag.
+ *
+ * @type String
+ */
+/**
+ * Sets the default layout direction of the grid. Can be `LTR` or `RTL`. Set with a `!global` flag.
+ *
+ * @type String
+ */
+/**
+ * Displays the visual grid when set to true. The overlaid grid may be few pixels off depending on the browser's rendering engine and pixel rounding algorithm. Set with the `!global` flag.
+ *
+ * @type Bool
+ */
+/**
+ * Sets the visual grid color. Set with `!global` flag.
+ *
+ * @type Color
+ */
+/**
+ * Sets the `z-index` property of the visual grid. Can be `back` (behind content) or `front` (in front of content). Set with `!global` flag.
+ *
+ * @type String
+ */
+/**
+ * Sets the opacity property of the visual grid. Set with `!global` flag.
+ *
+ * @type Number (unitless)
+ */
+/**
+ * Disable all deprecation warnings. Defaults to `false`. Set with a `!global` flag.
+ *
+ * @type Bool
+ */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+/**
+ * Removes the element's gutter margin, regardless of its position in the grid hierarchy or display property. It can target a specific element, or every `nth-child` occurrence. Works only with `block` layouts.
+ *
+ * @param {List} $query (block)
+ *   List of arguments. Supported arguments are `nth-child` selectors (targets a specific pseudo element) and `auto` (targets `last-child`).
+ *
+ *   When passed an `nth-child` argument of type `*n` with `block` display, the omega mixin automatically adds a clear to the `*n+1` th element. Note that composite arguments such as `2n+1` do not support this feature.
+ *
+ *   **Deprecation warning**: The omega mixin will no longer take a `$direction` argument. To change the layout direction, use `row($direction)` or set `$default-layout-direction` instead.
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include omega;
+ *   }
+ *
+ *   .nth-element {
+ *     @include omega(4n);
+ *   }
+ *
+ * @example css - CSS Output
+ *   .element {
+ *     margin-right: 0;
+ *   }
+ *
+ *   .nth-element:nth-child(4n) {
+ *     margin-right: 0;
+ *   }
+ *
+ *   .nth-element:nth-child(4n+1) {
+ *     clear: left;
+ *   }
+ */
+/**
+ * Makes an element a outer container by centring it in the viewport, clearing its floats, and setting its `max-width`.
+ * Although optional, using `outer-container` is recommended. The mixin can be called on more than one element per page, as long as they are not nested.
+ *
+ * @param {Number (unit)} $local-max-width ($max-width)
+ *   Max width to be applied to the element. Can be a percentage or a measure.
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include outer-container(100%);
+ *   }
+ *
+ * @example css - CSS Output
+ *   .element {
+ *     *zoom: 1;
+ *     max-width: 100%;
+ *     margin-left: auto;
+ *     margin-right: auto;
+ *   }
+ *
+ *   .element:before, .element:after {
+ *     content: " ";
+ *     display: table;
+ *   }
+ *
+ *   .element:after {
+ *     clear: both;
+ *   }
+ */
+/**
+ * Specifies the number of columns an element should span. If the selector is nested the number of columns of its parent element should be passed as an argument as well.
+ *
+ * @param {List} $span
+ *   A list containing `$columns`, the unitless number of columns the element spans (required), and `$container-columns`, the number of columns the parent element spans (optional).
+ *
+ *   If only one value is passed, it is assumed that it's `$columns` and that that `$container-columns` is equal to `$grid-columns`, the total number of columns in the grid.
+ *
+ *   The values can be separated with any string such as `of`, `/`, etc.
+ *
+ * @param {String} $display (block)
+ *   Sets the display property of the element. By default it sets the display propert of the element to `block`.
+ *
+ *   If passed `block-collapse`, it also removes the margin gutter by adding it to the element width.
+ *
+ *   If passed `table`, it sets the display property to `table-cell` and calculates the width of the element without taking gutters into consideration. The result does not align with the block-based grid.
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include span-columns(6);
+
+ *    .nested-element {
+ *      @include span-columns(2 of 6);
+ *    }
+ *  }
+ *
+ * @example css - CSS Output
+ *   .element {
+ *     display: block;
+ *     float: left;
+ *     margin-right: 2.35765%;
+ *     width: 48.82117%;
+ *   }
+ *
+ *   .element:last-child {
+ *     margin-right: 0;
+ *   }
+ *
+ *   .element .nested-element {
+ *     display: block;
+ *     float: left;
+ *     margin-right: 4.82916%;
+ *     width: 30.11389%;
+ *   }
+ *
+ *   .element .nested-element:last-child {
+ *     margin-right: 0;
+ *   }
+ */
+/**
+ * Designates the element as a row of columns in the grid layout. It clears the floats on the element and sets its display property. Rows can't be nested, but there can be more than one row element—with different display properties—per layout.
+ *
+ * @param {String} $display (default)
+ *   Sets the display property of the element and the display context that will be used by its children. Can be `block` or `table`.
+ *
+ * @param {String} $direction ($default-layout-direction)
+ *   Sets the layout direction. Can be `LTR` (left-to-right) or `RTL` (right-to-left).
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include row();
+ *   }
+ *
+ * @example css - CSS Output
+ *   .element {
+ *     *zoom: 1;
+ *     display: block;
+ *   }
+ *
+ *  .element:before, .element:after {
+ *    content: " ";
+ *    display: table;
+ *  }
+ *
+ *  .element:after {
+ *    clear: both;
+ *  }
+ */
+/**
+ * Translates an element horizontally by a number of columns. Positive arguments shift the element to the active layout direction, while negative ones shift it to the opposite direction.
+ *
+ * @param {Number (unitless)} $n-columns (1)
+ *   Number of columns by which the element shifts.
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include shift(-3);
+ *   }
+ *
+ * @example css - CSS output
+ *   .element {
+ *     margin-left: -25.58941%;
+ *   }
+ */
+/**
+ * Translates an element horizontally by a number of columns, in a specific nesting context.
+ *
+ * @param {List} $shift
+ *   A list containing the number of columns to shift (`$columns`) and the number of columns of the parent element (`$container-columns`).
+ *
+ *   The two values can be separated with any string such as `of`, `/`, etc.
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include shift(-3 of 6);
+ *   }
+ *
+ * @example css - CSS output
+ *   .element {
+ *     margin-left: -52.41458%;
+ *   }
+ */
+/**
+ * Adds padding to the element.
+ *
+ * @param {List} $padding (flex-gutter())
+ *   A list of padding value(s) to use. Passing `default` in the list will result in using the gutter width as a padding value.
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include pad(30px -20px 10px default);
+ *   }
+ *
+ * @example css - CSS Output
+ *   .element {
+ *     padding: 30px -20px 10px 2.35765%;
+ *   }
+ */
+/**
+ * Forces the element to fill its parent container.
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include fill-parent;
+ *   }
+ *
+ * @example css - CSS Output
+ *   .element {
+ *     width: 100%;
+ *     -webkit-box-sizing: border-box;
+ *     -moz-box-sizing: border-box;
+ *     box-sizing: border-box;
+ *   }
+ */
+/**
+ * Outputs a media-query block with an optional grid context (the total number of columns used in the grid).
+ *
+ * @param {List} $query
+ *   A list of media query features and values, where each `$feature` should have a corresponding `$value`.
+ *   For a list of valid values for `$feature`, click [here](http://www.w3.org/TR/css3-mediaqueries/#media1).
+ *
+ *   If there is only a single `$value` in `$query`, `$default-feature` is going to be used.
+ *
+ *   The number of total columns in the grid can be set by passing `$columns` at the end of the list (overrides `$total-columns`).
+ *
+ *
+ * @param {Number (unitless)} $total-columns ($grid-columns)
+ *   - Number of columns to use in the new grid context. Can be set as a shorthand in the first parameter.
+ *
+ * @example scss - Usage
+ *   .responsive-element {
+ *      @include media(769px) {
+ *        @include span-columns(6);
+ *      }
+ *   }
+ *
+ *  .new-context-element {
+ *    @include media(min-width 320px max-width 480px, 6) {
+ *      @include span-columns(6);
+ *    }
+ *  }
+ *
+ * @example css - CSS Output
+ *  @media screen and (min-width: 769px) {
+ *    .responsive-element {
+ *      display: block;
+ *      float: left;
+ *      margin-right: 2.35765%;
+ *      width: 48.82117%;
+ *    }
+ *
+ *    .responsive-element:last-child {
+ *      margin-right: 0;
+ *    }
+ *  }
+ *
+ *  @media screen and (min-width: 320px) and (max-width: 480px) {
+ *    .new-context-element {
+ *      display: block;
+ *      float: left;
+ *      margin-right: 4.82916%;
+ *      width: 100%;
+ *    }
+ *
+ *    .new-context-element:last-child {
+ *      margin-right: 0;
+ *    }
+ *  }
+ */
+/**
+ * Resets the active display property to `block`. Particularly useful when changing the display property in a single row.
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include row(table);
+ *     // Context changed to table display
+ *   }
+ *
+ *   @include reset-display;
+ *   // Context is reset to block display
+ */
+/**
+ * Resets the active layout direction to the default value set in `$default-layout-direction`. Particularly useful when changing the layout direction in a single row.
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include row($direction: RTL);
+ *     // Context changed to right-to-left
+ *   }
+ *
+ *   @include reset-layout-direction;
+ *   // Context is reset to left-to-right
+ */
+/**
+ * Resets both the active layout direction and the active display property.
+ *
+ * @example scss - Usage
+ *   .element {
+ *     @include row(table, RTL);
+ *     // Context changed to table table and right-to-left
+ *   }
+ *
+ *   @include reset-all;
+ *   // Context is reset to block display and left-to-right
+ */
+/**
+ * Changes the display property used by other mixins called in the code block argument.
+ *
+ * @param {String} $display (block)
+ *   Display value to be used within the block. Can be `table` or `block`.
+ *
+ * @example scss
+ *   @include display(table) {
+ *    .display-table {
+ *      @include span-columns(6);
+ *     }
+ *   }
+ *
+ * @example css
+ *   .display-table {
+ *      display: table-cell;
+ *      ...
+ *   }
+ */
+/**
+ * Changes the direction property used by other mixins called in the code block argument.
+ *
+ * @param {String} $direction (left-to-right)
+ *   Layout direction to be used within the block. Can be `left-to-right` or `right-to-left`.
+ *
+ * @example scss - Usage
+ *   @include direction(right-to-left) {
+ *    .right-to-left-block {
+ *      @include span-columns(6);
+ *     }
+ *   }
+ *
+ * @example css - CSS Output
+ *   .right-to-left-block {
+ *     float: right;
+ *      ...
+ *   }
+ */
+@media screen and (max-width: 852px) {
+  .mobile {
+    display: none; } }
+*:focus {
+  outline: 0; }
+
+html, body {
+  margin: 0; }
+
+body {
+  /*padding: 18px;
+  padding-top: 12px;*/
+  font-family: "{{theme.fonte}}";
+  font-size: {{theme.tamanho_da_fonte}}px;
+  /*background: {{theme.pagina_fundo}};*/
+  background-image: url("https://d2e3vlurz5kmh0.cloudfront.net/media/W1siZiIsIm1pcC1jYXNhLWRlY29yYWNhby9wcm9kdWN0cy82NDMyL2ltYWdlcy85YTFmMjFjYi02NWNkLTQ5ZjQtOWM4OC1hODVkNGNlNDU2MjctYm9saW5oYXNwLmpwZyJdLFsicCIsInRodW1iIiwiMTMwMHg%2BIl0sWyJwIiwiZW5jb2RlIiwianBnIiwiLXF1YWxpdHkgODAiXV0/file.jpg");
+  background-repeat: repeat;
+}
+  body:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: 18px solid {{theme.pagina_fundo}};
+    z-index: 999;
+    pointer-events: none; }
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+a {
+  color: {{theme.pagina_texto}}; }
+  a:hover {
+    opacity: 0.7; }
+
+.mine_button, .mine_btn, .mine_select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "{{theme.fonte_secundaria}}";
+  padding: 10px 32px;
+  font-size: 110%;
+  color: {{theme.produto_destaque}};
+  border-radius: 0;
+  border: 2px solid {{theme.produto_destaque}};
+  text-transform: uppercase;
+  cursor: pointer; }
+  .mine_button:hover, .mine_btn:hover, .mine_select:hover {
+    box-shadow: 0 0 0 1px {{theme.produto_destaque}}; }
+
+.variations_container:after {
+  content: '▾';
+  margin-left: -27px;
+  font-size: 130%; }
+.variations_container .mine_select {
+  padding: 7px;
+  padding-left: 13px;
+  padding-right: 36px;
+  font-size: 85%;
+  margin: 10px 0;
+  text-transform: none; }
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 18px;
+  /*background: {{theme.pagina_fundo}};*/
+  background: rgba(255,255,255,0.9); 
+  z-index: 1; }
+  .header .header-container {
+    margin: 12px 0;
+    display: table;
+    width: 100%; }
+  @media screen and (max-width: 852px) {
+    .header {
+      position: relative;
+      padding: 0; }
+      .header .header-container {
+        display: block; } }
+  .header .logo, .header .nav {
+    display: table-cell;
+    vertical-align: middle;
+    /*padding: 5px 0;*/
+    height: 60px;
+    text-decoration: none;}
+    .header .logo img, .header .nav img {
+      vertical-align: middle; }
+    @media screen and (max-width: 852px) {
+      .header .logo, .header .nav {
+        display: block;
+        width: 100%;
+        text-align: center; } }
+  .header .logo:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: -0.25em; }
+  .header .logo.text {
+    font-size: 195%;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: "{{theme.fonte_titulo}}";
+    color: {{theme.nome_da_loja_cor}}; }
+  .header .mine_search {
+    display: inline-block; }
+    .header .mine_search input[type="submit"] {
+      display: none; }
+    .header .mine_search input[type="text"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+      background: none;
+      border-radius: 0;
+      border: none;
+      border-bottom: 0.5px solid {{theme.pagina_texto}};
+      margin: 0;
+      padding: 4px;
+      padding-left: 0;
+      font-family: "{{theme.fonte}}";
+      font-size: 110%;
+      width: 170px; }
+  .header #search-button {
+    position: relative;
+    cursor: pointer;
+    font-size: 110%;
+    color: {{theme.pagina_texto}};
+    opacity: 0.7; }
+  @media screen and (max-width: 852px) {
+    .header .nav li:last-child {
+      display: block;
+      width: 100%;
+      margin: 0; } 
+    
+  }
+
+.nav {
+  text-align: right;
+  line-height: 230%; }
+  .nav li {
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 0 13px; }
+    .nav li:last-child {}
+    .nav li a {
+      text-decoration: none;
+      padding: 3px; }
+      .nav li a:hover {
+        opacity: 1;
+        text-decoration: underline; }
+    .nav li.selected a {
+      font-weight: 700; }
+  .nav.categories, .nav.subcategories {
+    display: none;
+    background: {{theme.categorias_fundo}};
+    width: 100%;
+    text-align: center; }
+    .nav.categories li a, .nav.subcategories li a {
+      color: {{theme.categorias_texto}};
+      z-index: 1000;
+      -webkit-font-smoothing: subpixel-antialiased; }
+  .nav.categories {
+    display: none; }
+    .nav.categories.show {
+      display: block; }
+  .nav.subcategories {
+    background: none;
+    position: relative; }
+    .nav.subcategories:after {
+      content: '';
+      display: block;
+      position: absolute;
+      background: {{theme.categorias_fundo}};
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+      z-index: -1; }
+
+.main {
+  position: relative; }
+
+.alert {
+  background: {{theme.lista_fundo}};
+  color: {{theme.lista_destaque}};
+  text-align: center;
+  font-family: "{{theme.fonte_secundaria}}";
+  font-size: 120%;
+  padding: 20px;
+  opacity: 0.5; }
+  .alert .fa {
+    display: none; }
+
+.list_page, .cart_page {
+  background: {{theme.lista_fundo}}; }
+  .list_page h1, .cart_page h1 {
+    color: {{theme.lista_destaque}};
+    text-align: center;
+    font-family: "{{theme.fonte_secundaria}}";
+    margin: 0;
+    padding: 50px 0;
+    font-weight: 400;
+    /*font-size: 270%;*/ }
+    @media screen and (max-width: 852px) {
+      .list_page h1, .cart_page h1 {
+        /*font-size: 150%;*/ } }
+  .list_page .products, .cart_page .products {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto; }
+    .list_page .products:after, .cart_page .products:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .list_page .products a, .cart_page .products a {
+      float: left;
+      display: block;
+      margin-right: 5%;
+      width: 20%;
+      margin-top: 5%;
+      overflow: hidden;
+      position: relative;
+      color: {{theme.lista_texto}};
+      -webkit-font-smoothing: antialiased; }
+      .list_page .products a:last-child, .cart_page .products a:last-child {
+        margin-right: 0; }
+      .list_page .products a:nth-child(4n), .cart_page .products a:nth-child(4n) {
+        margin-right: 0; }
+      .list_page .products a:nth-child(4n+1), .cart_page .products a:nth-child(4n+1) {
+        /*clear: left;*/
+        margin-left: 2%;}
+      
+      @media screen and (max-width: 852px) {
+        .list_page .products a, .cart_page .products a {
+          float: left;
+          display: block;
+          margin-right: 10%;
+          margin-top: 10%;
+          width: 40%; }
+          .list_page .products a:last-child, .cart_page .products a:last-child {
+            margin-right: 0; }
+          .list_page .products a:nth-child(2n), .cart_page .products a:nth-child(2n) {
+            margin-right: 0; }
+          .list_page .products a:nth-child(2n+1), .cart_page .products a:nth-child(2n+1) {
+            clear: left;
+            margin-left: 5%;} }
+      .list_page .products a .image, .cart_page .products a .image {
+        background: {{theme.produto_fundo}}; }
+      .list_page .products a img, .cart_page .products a img {
+        width: 100%;
+        height: auto;
+        display: block; }
+      .list_page .products a .info, .cart_page .products a .info {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        text-align: center;
+        opacity: 0;
+        -webkit-transition: 0.2s;
+        -moz-transition: 0.2s;
+        transition: 0.2s; }
+        .list_page .products a .info:before, .cart_page .products a .info:before {
+          content: '';
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle;
+          margin-right: -0.25em; }
+        .list_page .products a .info:after, .cart_page .products a .info:after {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: {{theme.lista_destaque}};
+          opacity: 0.6;
+          top: 0;
+          left: 0; }
+      .list_page .products a .info-container, .cart_page .products a .info-container {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        z-index: 9; }
+        .list_page .products a .info-container span, .cart_page .products a .info-container span {
+          display: inline-block;
+          width: 100%; }
+      .list_page .products a:hover, .cart_page .products a:hover {
+        opacity: 1; }
+        .list_page .products a:hover .info, .cart_page .products a:hover .info {
+          opacity: 1; }
+      .list_page .products a .title, .cart_page .products a .title {
+        font-size: 200%;
+        line-height: 170%; }
+        .italic .list_page .products a .title, .italic .cart_page .products a .title {
+          font-style: italic; }
+      .list_page .products a .price, .cart_page .products a .price {
+        font-size: 115%;
+        font-family: "{{theme.fonte_secundaria}}"; }
+
+.cart_page {
+  color: {{theme.lista_destaque}}; }
+  .cart_page h1 {
+    /*font-size: 250%;*/ }
+    @media screen and (max-width: 852px) {
+      .cart_page h1 {
+        /*font-size: 150%;*/ } }
+  .cart_page .container {
+    margin: 0 100px;
+    padding-bottom: 80px;
+    text-align: right; }
+    @media screen and (max-width: 852px) {
+      .cart_page .container {
+        margin: 0 10px;
+        font-size: 70%;
+        text-align: center; } }
+  .cart_page .total {
+    font-size: 150%;
+    font-weight: 700;
+    margin: 20px 0; }
+  .cart_page .mine_btn {
+    margin: 20px 0; }
+  .cart_page table {
+    width: 100%;
+    font-size: 150%;
+    border-collapse: collapse;
+    text-align: left; }
+    .cart_page table tr {
+      border-bottom: 1px solid {{theme.lista_destaque}}; }
+    .cart_page table th {
+      text-align: left;
+      font-weight: 400;
+      padding: 5px 0; }
+    .cart_page table td {
+      padding: 25px 0 30px; }
+    .cart_page table .title a {
+      text-decoration: none;
+      margin-right: 10px; }
+    .cart_page table .close {
+      font-size: 70%; }
+    .cart_page table .quantity input {
+      border: 0.5px solid {{theme.lista_destaque}};
+      padding: 7px 7px 10px;
+      margin: 0;
+      font-size: 90%;
+      background: none;
+      width: 74px;
+      font-family: "{{theme.fonte}}"; }
+    .cart_page table .quantity, .cart_page table .price, .cart_page table .total_price {
+      width: 1%;
+      white-space: nowrap;
+      padding-left: 50px; }
+    @media screen and (max-width: 852px) {
+      .cart_page table .price {
+        display: none; }
+      .cart_page table .quantity, .cart_page table .total_price {
+        padding-left: 15px; }
+      .cart_page table .quantity input {
+        padding: 5px 11px;
+        font-size: 120%;
+        width: 55px; } }
+
+.page {
+  background: {{theme.lista_fundo}};
+  color: {{theme.lista_destaque}};
+  font-family: "{{theme.fonte}}";
+  font-size: 120%;
+  padding: 50px 100px; }
+  @media screen and (max-width: 852px) {
+    .page {
+      font-size: 100%;
+      padding: 10px 30px; } }
+  .page .container {
+    max-width: 650px;
+    margin: 0 auto; }
+    .page .container h1 {
+      font-family: "{{theme.fonte_secundaria}}";
+      font-weight: 400; }
+
+.product_page {
+  color: {{theme.produto_texto}}; }
+  .product_page .images {
+    background: {{theme.produto_fundo}};
+    padding-right:500px;
+  }
+    .product_page .images img {
+      max-width: 800px;
+      max-height: 800px;
+      display: block;
+      margin: 0 auto; }
+  .product_page .details {
+    position: absolute;
+    width: 23%;
+    right: 5%;
+    /*position: fixed;
+    width: 23%;
+    height: 100%;
+    top: 0;
+    right: 5%;*/ }
+    .product_page .details:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+      margin-right: -1.25em; }
+    @media screen and (max-width: 852px) {
+      .product_page .details {
+        position: relative;
+        width: 100%;
+        height: auto;
+        right: auto; 
+        background: #F8F8F8;
+        padding-left: 50px;} }
+  .product_page .details-container {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: 0%; }
+    @media screen and (max-width: 852px) {
+      .product_page .details-container {
+        top: auto;
+        margin-bottom: 30px; }
+        .product_page .details-container .add_to_cart {
+          text-align: center; } }
+  .product_page h1 {
+    margin: 5px 0;
+    font-family: "{{theme.fonte}}";
+    font-weight: 400;
+    /*font-size: 270%;*/
+    line-height: 110%; }
+    .italic .product_page h1 {
+      font-style: italic; }
+  .product_page .price {
+    font-family: "{{theme.fonte_secundaria}}";
+    font-size: 120%; }
+  .product_page .description {
+    font-family: "{{theme.fonte}}";
+    padding: 15px 0;
+    font-size: 110%; }
+
+.banner {
+  margin-bottom: 0; }
+  .banner .slick-slide {
+    height: auto !important; }
+  .banner img {
+    width: 100%;
+    height: auto; }
+  .banner button {
+    display: none !important; }
+
+.footer {
+  margin: 18px 0;
+  text-transform: lowercase;
+  font-size: 14pt; 
+}
+  .footer * {
+    vertical-align: middle; }
+  .footer a {
+    text-decoration: none;
+    margin-right: 10px;
+    background: rgba(255,255,255,0.9); 
+}
+  .footer .fa {
+    font-size: 170%; }
+
+.category {
+  color: #FFFFFF;
+  text-decoration: none;
+  display: inline-block;
+  height: 53px;
+  min-width: 53px;
+  padding: 12px 0;
+}
+
+.category:hover {
+  background-color: #838383;
+  color: #FFFFFF;
+}
+
+.subcategory {
+  color: #FFFFFF;
+  text-decoration: none;
+  height: 53px;
+  min-width: 53px;
+  padding: 7px 0;
+}
+
+.subcategory:hover {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+/</style>
+</head>
+
+<body class="{{#if theme.titulo_do_produto_italico}}italic{{/if}}">  
+
+  <div class="header">
+
+    <div class="header-container">
+      {{#if theme.logo}}
+        <a class="logo" href="{{store_url}}">
+          <img src='{{resize_image theme.logo "300x60"}}' data-at2x='{{resize_image theme.logo "280x120"}}' alt="{{store_name}}">
+        </a>
+      {{else}}
+        <a class="logo text" href="{{store_url}}">
+        {{#if theme.nome_da_loja}}
+          {{theme.nome_da_loja}}
+        {{else}}
+          {{store_name}}
+        {{/if}}
+        </a>
+      {{/if}}
+
+      <ul class="nav">
+        <li class="{{#if all_products_page}}selected{{/if}}">
+          <a href="{{products_url}}">produtos</a>
+        </li>
+        {{#each pages}}
+          <li class="{{#if is_current}}selected{{/if}}">
+            <a href="{{url}}">{{title}}</a>
+          </li>
+        {{/each}}
+        <li class="cart {{#is_cart_page}}selected{{/is_cart_page}}">
+          <a href="{{cart_url}}">
+            carrinho
+            {{#if cart_has_items}}
+              ({{cart_count}})
+            {{/if}}
+          </a>
+        </li>
+        <li>
+          {{{search_form}}}
+          <i id="search-button" class="fa fa-search"></i>
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+
+  <div class="main">
+
+    <ul class="nav categories show">
+      <a class="category" href="{{products_url}}">
+        <li class="{{#if all_products_page}}selected{{/if}}">
+          tudo
+        </li>
+      </a>
+      {{#each categories}}
+        <a class="category {{#if has_children}}has_children{{/if}}" href="{{url}}" category="{{label}}">
+          <li class="{{#if is_current}}selected{{/if}}">
+            {{label}}
+          </li>
+        </a>
+      {{/each}}
+    </ul>
+
+    {{#each categories}}
+      {{#if has_children}}
+        <ul id="{{label}}" cat="{{label}}" class="nav subcategories">
+          {{#each children}}
+            <a class="subcategory" href="{{url}}">
+              <li class="{{#if is_current}}selected{{/if}}">
+                {{label}}
+              </li>
+            </a>
+          {{/each}}
+        </ul>
+      {{/if}}
+    {{/each}}
+
+    {{#not_found_page}}
+      <div class="list_page">
+        <h1 class="information">
+          Página não encontrada
+        </h1>
+      </div>
+    {{/not_found_page}}
+
+    {{minestore_messages}}
+
+    {{#home_page}}
+      {{#if theme.banner_1_imagem}}
+        <div class="banner">
+            <div><a href="{{theme.banner_1_link}}">
+              <img src='{{resize_image theme.banner_1_imagem "1300x>"}}'
+             data-at2x='{{resize_image theme.banner_1_imagem "2600x>"}}'>
+            </a></div>
+          {{#if theme.banner_2_imagem}}
+            <div><a href="{{theme.banner_2_link}}">
+              <img src='{{resize_image theme.banner_2_imagem "1300x>"}}'
+             data-at2x='{{resize_image theme.banner_2_imagem "2600x>"}}'>
+            </a></div>
+          {{/if}}
+          {{#if theme.banner_3_imagem}}
+            <div><a href="{{theme.banner_3_link}}">
+              <img src='{{resize_image theme.banner_3_imagem "1300x>"}}'
+             data-at2x='{{resize_image theme.banner_3_imagem "2600x>"}}'>
+            </a></div>
+          {{/if}}
+          {{#if theme.banner_4_imagem}}
+            <div><a href="{{theme.banner_4_link}}">
+              <img src='{{resize_image theme.banner_4_imagem "1300x>"}}'
+             data-at2x='{{resize_image theme.banner_4_imagem "2600x>"}}'>
+            </a></div>
+          {{/if}}
+          {{#if theme.banner_5_imagem}}
+            <div><a href="{{theme.banner_5_link}}">
+              <img src='{{resize_image theme.banner_5_imagem "1300x>"}}'
+             data-at2x='{{resize_image theme.banner_5_imagem "2600x>"}}'>
+            </a></div>
+          {{/if}}
+        </div>
+      {{/if}}
+    {{/home_page}}
+
+    {{#list_page}}
+      <div class="list_page">
+
+        {{#search_page}}
+          <h1 class="information">
+            pesquisando
+            <span>{{search_term}}</span>
+          </h1>
+        {{/search_page}}
+
+        {{#each categories}}
+          {{#if is_current}}
+            
+          {{/if}}
+        {{/each}}
+
+        {{#each categories}}
+          {{#if is_current}}
+            <h1>
+              {{label}}
+              {{#if has_children}}
+                {{#each children}}
+                  {{#if is_current}}
+                    – {{label}}
+                  {{/if}}
+                {{/each}}
+              {{/if}}
+            </h1>
+          {{/if}}
+        {{/each}}
+
+        {{#if all_products_page}}
+          <h1>Produtos</h1>
+        {{/if}}
+
+        {{#home_page}}
+          <h1>{{theme.titulo_da_lista_destaque}}</h1>
+        {{/home_page}}
+
+        <div class="products">
+          {{#each products}}
+            <a href="{{url}}" class="product {{#if out_of_stock}}out_of_stock{{/if}}">
+              <div class="image">
+                {{#with primary_image}}
+                  <img src='{{resize_image this "470x470#"}}' data-at2x='{{resize_image this "940x940#"}}' alt="{{title}}">
+                {{/with}}
+              </div>
+              <div class="info">
+                <div class="info-container">
+                  <span class="title">{{title}}</span>
+                  <br/>
+                  {{#if in_stock}}
+                    <span class="price">{{price_with_currency}}</span>
+                  {{/if}}
+                  {{#if out_of_stock}}
+                    <span class="price out_of_stock">Não disponível</span>
+                  {{/if}}
+                </div>
+              </div>
+            </a>
+          {{/each}}
+        </div>
+        {{{paginate}}}
+
+      </div>
+    {{/list_page}}
+
+    {{#product_page}}
+      {{#with product}}
+        <div class="product_page">
+
+          <div class="details">
+            <div class="details-container">
+              <h1>{{title}}</h1>
+
+              {{#add_to_cart}}
+
+                {{#if has_multiple_variants}}
+                  <div class="variations_container">
+                    {{variations_select}}
+                  </div>
+                {{else}}
+                  {{variations_select}}
+                {{/if}}
+
+                <div class="price">
+                  <span>{{price_with_currency}}</span>
+
+                  {{#if out_of_stock}}
+                    <span class="out_of_stock">
+                      Este produto não está disponível
+                    </span>
+                  {{/if}}
+                </div>
+
+                <div class="description">
+                  {{{description}}}
+                </div>
+
+                <div class="add_to_cart">
+                  {{#add_to_cart_button}}
+                    comprar
+                  {{/add_to_cart_button}}
+                </div>
+                
+              {{/add_to_cart}}
+            </div>
+          </div>
+
+          <div class="images">
+            {{#each images}}
+              <div><img src='{{resize_image this "1300x>"}}'
+             data-at2x='{{resize_image this "2600x>"}}'></div>
+            {{/each}}
+          </div>
+
+        </div>
+      {{/with}}
+    {{/product_page}}
+
+    {{#cart_page}}
+      <div class="cart_page">
+
+        <h1 class="information">
+          {{information}}
+        </h1>
+
+        <div class="container">
+
+          {{#with cart}}  
+            {{#cart_form_tag}}
+              <table>
+                <tr>
+                  <th>Produto</th>
+                  <th class="quantity">Qtd.</th>
+                  <th class="price">Preço</th>
+                  <th class="total_price">Total</th>
+                </tr>
+
+                {{#each line_items}}
+                  <tr>
+                    <td class="title">
+                      {{#link_to_product}}{{title}}{{/link_to_product}}
+                      {{#remove_line_item_link}}(remover){{/remove_line_item_link}}
+                    </td>
+                    <td class="quantity">{{{quantity_input_field}}}</td>
+                    <td class="price">{{unit_price}}</td>
+                    <td class="total_price">{{total_price}}</td>
+                  </tr>
+                {{/each}}
+              </table>
+
+              <div class="total">
+                Total: <span>{{total_price}}</span>
+              </div>
+
+              {{#submit_cart_form_tag}}fechar pedido{{/submit_cart_form_tag}}
+
+            {{/cart_form_tag}}
+          {{/with}}
+
+        </div>
+
+      </div>
+    {{/cart_page}}
+
+    {{#sobre_page}}
+      <div class="page">
+        <div class="container">
+          <h1>
+            Sobre
+          </h1>
+          {{{store_description}}}
+        </div>
+      </div>
+    {{/sobre_page}}
+
+    {{#termos_page}}
+      <div class="page">
+        <div class="container">
+          <h1>
+            Termos de Uso
+          </h1>
+          {{{store_terms}}}
+        </div>
+      </div>
+    {{/termos_page}}
+
+  </div>
+
+  <div class="footer">
+    <a class="termos" href="/termos">Termos de Uso</a>
+    {{#if theme.facebook}}
+      <a href="{{theme.facebook}}">
+        <i class="fa fa-facebook-square"></i>
+      </a>
+    {{/if}}
+    {{#if theme.twitter}}
+      <a href="{{theme.twitter}}">
+        <i class="fa fa-twitter-square"></i>
+      </a>
+    {{/if}}
+    {{#if theme.instagram}}
+      <a href="{{theme.instagram}}">
+        <i class="fa fa-instagram"></i>
+      </a>
+    {{/if}}
+    {{#if theme.flickr}}
+      <a href="{{theme.flickr}}">
+        <i class="fa fa-flickr"></i>
+      </a>
+    {{/if}}
+    {{#if theme.pinterest}}
+      <a href="{{theme.pinterest}}">
+        <i class="fa fa-pinterest-square"></i>
+      </a>
+    {{/if}}
+    {{#if theme.tumblr}}
+      <a href="{{theme.tumblr}}">
+        <i class="fa fa-tumblr-square"></i>
+      </a>
+    {{/if}}
+    {{#if theme.vimeo}}
+      <a href="{{theme.vimeo}}">
+        <i class="fa fa-vimeo-square"></i>
+      </a>
+    {{/if}}
+    {{#if theme.youtube}}
+      <a href="{{theme.youtube}}">
+        <i class="fa fa-youtube"></i>
+      </a>
+    {{/if}}
+  </div>
+
+  <div class="mobile"></div>
+  <script>
+    $(function() {
+
+      $('.mine_search input[type="text"]').hide();
+
+      $('.banner img').load(function(){
+        $('.banner').slick({
+          slidesToScroll: 1,
+          autoplay: true,
+          speed: 400,
+          autoplaySpeed: 3500,
+          adaptiveHeight: true
+        });
+      });
+
+      $('#search-button').click(function(){
+        $('.mine_search input[type="text"]').animate({width:'toggle'},300);  
+        setTimeout(function(){
+          $('#search-button').addClass('submit');
+        },10);
+      });
+
+      $(document).on('click', '#search-button.submit', function(){
+        $('.mine_search').submit();
+      });
+
+      if ($(".mobile").css("display") === "none" ){
+        $('.main').css('marginTop', '0');
+      } else {
+        $('.main').css('marginTop', $('.header').outerHeight(true) );
+      }
+
+    });
+
+    $(window).resize(function() {
+      
+      if ($(".mobile").css("display") === "none" ){
+        $('.main').css('marginTop', '0');
+      } else {
+        $('.main').css('marginTop', $('.header').outerHeight(true) );
+      }
+
+    });
+    
+    $('.category.has_children').click(function(e) {
+      e.preventDefault();
+      var subcategories = $(".subcategories");
+      /*subcategories.forEach(function(e) {
+        e.style.display = "none";
+      });*/
+      var category = $(this).attr("category");
+      var willAppear = true;
+      if ($("[cat='"+category+"']").css('display') == 'block') {
+        willAppear = false;
+      }
+     // console.log(subcategories);
+      for (var i = 0; i < subcategories.length; ++i) {
+        console.log(subcategories[i]);
+        subcategories[i].style.display = "none";
+      }
+      //category.replace(" ", "\\\\ ");
+      console.log(willAppear+' '+category);
+      if (willAppear) {
+        $("[cat='"+category+"']").css('display', 'block');
+      }
+    });
+    
+    /*$('.subcategories').mouseleave(function(e) {
+      e.preventDefault();
+      $(this).css('display', 'none');
+    });*/
+  </script>
+</body>
+
+</html>
