@@ -634,7 +634,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    border: 18px solid {{theme.pagina_fundo}};
+    /*border: 18px solid {{theme.pagina_fundo}};*/
     z-index: 999;
     pointer-events: none; }
 
@@ -1073,17 +1073,18 @@ a {
     display: none !important; }
 
 .footer {
-  margin: 18px 0;
+  padding: 18px 0;
   text-transform: lowercase;
   font-size: 14pt; 
+  background: rgba(248, 248, 248, 0.9);
 }
   .footer * {
     vertical-align: middle; }
   .footer a {
     text-decoration: none;
     margin-right: 10px;
-    background: rgba(255,255,255,0.9); 
-}
+    margin-left: 30px;
+  }
   .footer .fa {
     font-size: 170%; }
 
@@ -1347,11 +1348,25 @@ a {
               {{/add_to_cart}}
             </div>
           </div>
+          
+          <script type="text/javascript">
+            var imgs = [];
+          </script>
 
           <div class="images">
             {{#each images}}
-              <div><img src='{{resize_image this "1300x>"}}'
-             data-at2x='{{resize_image this "2600x>"}}'></div>
+              <div imgid="{{this}}">
+                <img src='{{resize_image this "1300x>"}}'
+                     data-at2x='{{resize_image this "2600x>"}}'>
+                <a style="float:left; font-size:40px;"
+                     onclick="prev();"><</a>
+
+                <a style="float:right; font-size:40px;"
+                   onclick="next();">></a>
+              </div>
+             <script type="text/javascript">
+               imgs.push("{{this}}");
+             </script>
             {{/each}}
           </div>
 
@@ -1476,7 +1491,7 @@ a {
   <div class="mobile"></div>
   <script>
     $(function() {
-
+      
       $('.mine_search input[type="text"]').hide();
 
       $('.banner img').load(function(){
@@ -1505,6 +1520,12 @@ a {
       } else {
         $('.main').css('marginTop', $('.header').outerHeight(true) );
       }
+      
+      imgs.forEach(function(element, index, array) {
+        $("[imgid='"+element+"']").css("display", "none");
+      });
+      $("[imgid='"+imgs[0]+"']").css("display", "block");
+
 
     });
 
@@ -1517,6 +1538,26 @@ a {
       }
 
     });
+    
+    var i = 0;
+    
+    function next() {
+      $("[imgid='"+imgs[i]+"']").css("display", "none");
+      i++;
+      if (i>=imgs.length) {
+        i=0;
+      }
+      $("[imgid='"+imgs[i]+"']").css("display", "block");
+    }
+    
+    function prev() {
+      $("[imgid='"+imgs[i]+"']").css("display", "none");
+      i--;
+      if (i<0) {
+        i=(imgs.length-1);
+      }
+      $("[imgid='"+imgs[i]+"']").css("display", "block");
+    }
     
     $('.category.has_children').click(function(e) {
       e.preventDefault();
@@ -1539,6 +1580,7 @@ a {
       if (willAppear) {
         $("[cat='"+category+"']").css('display', 'block');
       }
+      
     });
     
     /*$('.subcategories').mouseleave(function(e) {
