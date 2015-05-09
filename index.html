@@ -708,6 +708,11 @@ a {
     margin: 12px 0;
     display: table;
     width: 100%; }
+    @media screen and (max-width: 437px) {
+      .header {
+        height: 170px;
+      }
+    }
   @media screen and (max-width: 852px) {
     .header {
       position: relative;
@@ -1063,8 +1068,7 @@ a {
         width: 100%;
         height: auto;
         right: auto; 
-        background: #F8F8F8;
-        padding-left: 50px;} }
+        background: #F8F8F8;} }
   .product_page .details-container {
     display: inline-block;
     vertical-align: middle;
@@ -1073,7 +1077,9 @@ a {
     @media screen and (max-width: 852px) {
       .product_page .details-container {
         top: auto;
-        margin-bottom: 30px; }
+        margin-bottom: 30px; 
+        padding-left: 30px;
+      }
         .product_page .details-container .add_to_cart {
           text-align: center; } }
   .product_page h1 {
@@ -1143,6 +1149,14 @@ a {
 .subcategory:hover {
   background-color: #333333;
   color: #FFFFFF;
+}
+
+#share-buttons img {
+  width: 40px;
+  padding: 5px;
+  border: 0;
+  box-shadow: 0;
+  display: inline;
 }
 
 /</style>
@@ -1377,6 +1391,14 @@ a {
                 
               {{/add_to_cart}}
             </div>
+            <div style="padding:10px 0;text-align:center;">Gostou? Compartilhe!</div>
+            <div id="share-buttons"><center>
+            <a href="http://www.facebook.com/sharer.php?u={{url}}" target="_blank"><img src="https://minestore-production-us.s3.amazonaws.com/mip-casa-decoracao%2Fproducts%2F6432%2Fimages%2Fe57576d0-8f9f-4d23-b499-2645b99882a8-facebook.png" alt="Facebook" /></a>
+              <a href="http://twitter.com/share?url={{url}}&text=MiP Casa %26 Decoração - {{title}}" target="_blank"><img src="https://minestore-production-us.s3.amazonaws.com/mip-casa-decoracao%2Fproducts%2F6432%2Fimages%2F67d68ae8-753a-4e18-96aa-ab1612c188cd-twitter.png" alt="Twitter" /></a>
+              <a href="https://plus.google.com/share?url={{url}}" target="_blank"><img src="https://minestore-production-us.s3.amazonaws.com/mip-casa-decoracao%2Fproducts%2F6432%2Fimages%2F06414408-e59a-4088-ae94-a95d4581faa7-google.png" alt="Google" /></a>
+              <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><img src="https://minestore-production-us.s3.amazonaws.com/mip-casa-decoracao%2Fproducts%2F6432%2Fimages%2Ff08c177b-32fc-476d-8b85-c291df01c241-pinterest.png" alt="Pinterest" /></a>
+              <a href="mailto:?Subject={{title}}&Body={{title}}0 {{url}}"><img src="https://minestore-production-us.s3.amazonaws.com/mip-casa-decoracao%2Fproducts%2F6432%2Fimages%2F3e6f434b-7a84-41f1-b9f6-7c7842006d28-email.png" alt="Email" /></a>
+            </center></div>
           </div>
           
           <script type="text/javascript">
@@ -1582,6 +1604,8 @@ a {
         i=0;
       }
       $("[imgid='"+imgs[i]+"']").css("display", "block");
+      $("[imgid='"+imgs[i]+"']").find("img").removeAttr("height");
+      $("[imgid='"+imgs[i]+"']").find("img").removeAttr("width");
     }
     
     function prev() {
@@ -1591,6 +1615,8 @@ a {
         i=(imgs.length-1);
       }
       $("[imgid='"+imgs[i]+"']").css("display", "block");
+      $("[imgid='"+imgs[i]+"']").find("img").removeAttr("height");
+      $("[imgid='"+imgs[i]+"']").find("img").removeAttr("width");
     }
     
     $('.category.has_children').click(function(e) {
