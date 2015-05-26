@@ -9,7 +9,7 @@
 
   <meta name="text:ID do Google Analytics" content=""/>
 
-  <meta name="text: Nome da loja"       content=""/>
+  <meta name="text: Nome da loja"       content="MiP - Casa & Decoração"/>
   <meta name="color:Nome da loja – Cor" content="#333333"/>
 
   <meta name="color:Página – Fundo"     content="#FFFFFF"/>
@@ -1151,6 +1151,57 @@ a {
   color: #FFFFFF;
 }
 
+.hide {
+  display:none;
+}
+
+.old-price {
+  text-decoration: line-through;
+}
+
+#minestore-shipping-fields {
+  margin-top: 10px;
+}
+
+#minestore-shipping-fields input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background: none;
+
+  font-family: "Oswald";
+  padding: 5px 15px;
+  font-size: 90%;
+  color: #000000;
+  border-radius: 0;
+  border: 2px solid #000000;
+  text-transform: uppercase;
+  
+  margin-right: 10px;
+}
+
+#minestore-shipping-fields button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "Oswald";
+  padding: 5px 15px;
+  font-size: 90%;
+  color: #000000;
+  border-radius: 0;
+  border: 2px solid #000000;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 #share-buttons img {
   width: 40px;
   padding: 5px;
@@ -1368,9 +1419,14 @@ a {
                 {{else}}
                   {{variations_select}}
                 {{/if}}
-
+                
                 <div class="price">
-                  <span>{{price_with_currency}}</span>
+                  <div class="old-price {{#unless offer_avaliable}}hide{{/unless}}">  <!-- lembre-se de utilizar a classe ".hide"para esconder o preço quando o produto não estiver em promoção -->
+                    De: {{original_price_with_currency}}
+                  </div>
+                  <div class="price-value">
+                    Por: {{price_with_currency}}
+                  </div>
 
                   {{#if out_of_stock}}
                     <span class="out_of_stock">
@@ -1457,9 +1513,30 @@ a {
                   </tr>
                 {{/each}}
               </table>
+              
+              {{ shipping_fields }}
 
+              {{#if is_shipping_calculated}}
+                <div class="subtotal">
+                  <p>{{ shipping_price }}</p>
+                  <p>Frete</p>
+                </div>
+              {{/if}}
+                
+              {{#if has_discount}}
+                <div class="subtotal">
+                  <p>{{ subtotal_price }}</p>
+                  <p>Subtotal</p>
+                </div>
+                <div class="discount">
+                  <p>{{ total_discount_price }}</p>
+                  <p>Desconto</p>
+                </div>
+              {{/if}}
+              
               <div class="total">
-                Total: <span>{{total_price}}</span>
+                <p>{{total_price}}</p>
+                <p>total</p>
               </div>
 
               {{#submit_cart_form_tag}}fechar pedido{{/submit_cart_form_tag}}
