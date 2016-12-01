@@ -15,7 +15,7 @@
   <meta name="color:Página – Fundo"     content="#FFFFFF"/>
   <meta name="color:Página – Texto"     content="#333333"/>
 
-  <meta name="color:Categorias – Fundo" content="#333333"/>
+  <meta name="color:Categorias – Fundo" content="#9b861e"/>
   <meta name="color:Categorias – Texto" content="#FFFFFF"/>
 
   <meta name="color:Lista – Fundo"      content="#F6F6F6"/>
@@ -700,12 +700,13 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0 18px;
+  /*padding: 0 18px;*/
   /*background: {{theme.pagina_fundo}};*/
   background: rgba(255,255,255,0.9); 
   z-index: 1; }
   .header .header-container {
     margin: 12px 0;
+    padding: 0 18px;
     display: table;
     width: 100%; }
     @media screen and (max-width: 437px) {
@@ -795,7 +796,7 @@ a {
       font-weight: 700; }
   .nav.categories, .nav.subcategories {
     display: none;
-    background: {{theme.categorias_fundo}};
+    background: #9b861e; /*{{theme.categorias_fundo}};*/
     width: 100%;
     text-align: center; }
     .nav.categories li a, .nav.subcategories li a {
@@ -813,7 +814,7 @@ a {
       content: '';
       display: block;
       position: absolute;
-      background: {{theme.categorias_fundo}};
+      background: #9b861e;/*{{theme.categorias_fundo}};*/
       top: 0;
       width: 100%;
       height: 100%;
@@ -1021,22 +1022,41 @@ a {
       font-weight: 400; }
 
 .product_page {
-  color: {{theme.produto_texto}}; }
+  color: {{theme.produto_texto}}; 
+  /*position: fixed;*/
+  /*top: 136px;*/
+  /*bottom: 131px;*/
+  /*left: 0;*/
+  /*right: 0;*/
+  height: 650px;
+  background: #F8F8F8;
+}
   .product_page .images {
     background: {{theme.produto_fundo}};
-    padding-right:30vw;
+    padding-right:31vw;
+    padding-left: 1vw;
     text-align: center;
   }
     .product_page .images img {
-      max-width:70vw;
+      max-width: 100%;
+      height: auto;
       max-height:600px;
       /*max-width: 800px;
       height: 800px;*/
       display: block;
       margin: 0 auto; }
       @media screen and (max-width: 852px) {
+        .product_page {
+          position: relative;
+          top: auto;
+          bottom: auto;
+          left: auto;
+          right: auto;
+          height: auto;
+        }
         .product_page .images {
           padding-right:0;
+          padding-left: 0;
         }
         .product_page .images img {
           max-width:100vw;
@@ -1049,8 +1069,9 @@ a {
     }
   .product_page .details {
     position: absolute;
-    width: 23%;
-    right: 5%;
+    width: 30%;
+    right: 0;
+    /*top: 0;*/
     /*position: fixed;
     width: 23%;
     height: 100%;
@@ -1070,10 +1091,11 @@ a {
         right: auto; 
         background: #F8F8F8;} }
   .product_page .details-container {
-    display: inline-block;
+    /*display: inline-block;*/
     vertical-align: middle;
-    position: relative;
-    top: 0%; }
+    /*position: relative;*/
+    /*top: 0%; */
+  }
     @media screen and (max-width: 852px) {
       .product_page .details-container {
         top: auto;
@@ -1087,7 +1109,8 @@ a {
     font-family: "{{theme.fonte}}";
     font-weight: 400;
     /*font-size: 270%;*/
-    line-height: 110%; }
+    line-height: 110%;
+    height: 69px;}
     .italic .product_page h1 {
       font-style: italic; }
   .product_page .price {
@@ -1096,7 +1119,16 @@ a {
   .product_page .description {
     font-family: "{{theme.fonte}}";
     padding: 15px 0;
-    font-size: 110%; }
+    font-size: 110%; 
+    height: 350px;
+    overflow: scroll;
+  }
+  @media screen and (max-width: 852px) {
+    .product_page .description {
+      height: initial;
+      overflow: auto;
+    }
+  }
 
 .banner {
   margin-bottom: 0; }
@@ -1113,6 +1145,9 @@ a {
   text-transform: lowercase;
   font-size: 14pt; 
   background: rgba(248, 248, 248, 0.9);
+  /*position: fixed;*/
+  /*bottom: 0;*/
+  width: 100%;
 }
   .footer * {
     vertical-align: middle; }
@@ -1123,6 +1158,12 @@ a {
   }
   .footer .fa {
     font-size: 170%; }
+    
+  @media screen and (max-width: 852px) {
+    .footer {
+      display: block;
+    }
+  }
 
 .category {
   color: #FFFFFF;
@@ -1256,11 +1297,6 @@ a {
       </ul>
     </div>
     
-
-  </div>
-
-  <div class="main">
-
     <ul class="nav categories show">
       <a class="category" href="{{products_url}}">
         <li class="{{#if all_products_page}}selected{{/if}}">
@@ -1289,6 +1325,10 @@ a {
         </ul>
       {{/if}}
     {{/each}}
+
+  </div>
+
+  <div class="main">
 
     {{#not_found_page}}
       <div class="list_page">
@@ -1390,7 +1430,10 @@ a {
                     <span class="price">{{price_with_currency}}</span>
                   {{/if}}
                   {{#if out_of_stock}}
-                    <span class="price out_of_stock">Não disponível</span>
+                    <span class="price out_of_stock">
+                      <!-- Não disponível -->
+                      Unidades em produção
+                    </span>
                   {{/if}}
                 </div>
               </div>
@@ -1430,7 +1473,8 @@ a {
 
                   {{#if out_of_stock}}
                     <span class="out_of_stock">
-                      Este produto não está disponível
+                      <!--Este produto não está disponível-->
+                      Atualmente indisponível — novas unidades em breve.
                     </span>
                   {{/if}}
                 </div>
